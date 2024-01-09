@@ -27,3 +27,127 @@ With loops, any repetitive task can be solved with a small amount of code. The a
 While this loop is endless, in the next exercise we will learn to create loops that execute a set number of times!
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+* The Classic For Loop
+----------------------
+An if statement allows us to check a specific condition once. But what if that condition needs to be checked a certain number of times?
+
+Definite loops can be used to repeat code a fixed number of times.
+
+While an if statement only has a conditional expression (like number < 5), a definite loop has two additional components:
+
+	. An initial statement, which defines the starting value for a loop variable.
+	Ex: number := 0
+
+	. A post statement, which defines what happens at the end of each loop iteration.
+	Ex: number++
+
+So while an if statement that prints one number less than 5 may look like this:
+
+number := 3
+if number < 5 {
+  fmt.Println(number)
+}
+// Output: 3
+
+A for loop that prints the numbers 0, 1, 2, 3, and 4 would look like this:
+
+for number := 0; number < 5; number++ {
+  fmt.Print(number, " ")
+}
+// Output: 0 1 2 3 4
+
+While the if statement prints a number once, the for loop uses a similar syntax to print a number five times.
+
+Let’s dive deeper into each component of that definite loop:
+
+	. The initial statement, number := 0, creates a new variable to be used within the for loop code block.
+
+	. The conditional expression, number < 5, will stop the loop when number reaches the target value of 5.
+
+	. The post statement, number++, increases the value of the number variable by 1 each time the code block completes.
+
+In this example, the amount of times that the number needed to be printed was known beforehand. But what do we do when we don’t know how many times a loop needs to run?
+
+Find out more in the next exercise!
+
+* Instructions
+--------------
+Checkpoint 1 Passed
+1.
+You are hosting a party and trying to count the number of guests. The last host left a loop to do this, but there is a bug in the code!
+
+Change the initial statement of the loop, count := 8, so that the count begins at 1 instead of 8.
+
+
+Hint
+An initial statement can be changed from starting at 10:
+
+for tally := 10; tally <= 50; tally++ {
+  fmt.Println(tally)
+}
+
+To starting at 20, like so:
+
+for tally := 20; tally <= 50; tally++ {
+  fmt.Println(tally)
+}
+
+Checkpoint 2 Passed
+2.
+Disaster has struck! Eight people cannot make it to the party!
+
+Change the conditional expression of the loop, count <= 20, so that the loop only counts up to 12.
+
+
+Hint
+A conditional expression can be changed ending at 50:
+
+for tally := 0; tally <= 50; tally++ {
+  fmt.Println(tally)
+}
+
+To ending at 100, like so:
+
+for tally := 0; tally <= 100; tally++ {
+  fmt.Println(tally)
+}
+
+Checkpoint 3 Passed
+3.
+With the amount of guests set, count off the odd numbered guests to make teams for a game!
+
+Change the post statement of the loop, count++, so that count = count + 2 after the completion of each loop.
+
+
+Hint
+A post statement can be changed from incrementing tally using tally++:
+
+for tally := 0; tally <= 50; tally++ {
+  fmt.Println(tally)
+}
+
+To incrementing tally using tally = tally + 10, like so:
+
+for tally := 0; tally <= 100; tally = tally + 10 {
+  fmt.Println(tally)
+}
+
+party.go
+--------
+package main
+
+import (
+    "fmt"
+)
+
+func main() {
+
+  for count := 1; count <= 12; count+= 2 {
+    fmt.Println(count)
+  }
+ 
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
