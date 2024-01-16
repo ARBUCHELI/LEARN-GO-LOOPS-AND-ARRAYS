@@ -1,0 +1,230 @@
+# LEARN GO: LOOPS AND ARRAYS
+----------------------------
+
+* Looping through a Food Order
+------------------------------
+Great job learning how to write loops in Go! Now it is time to test your knowledge on a bigger problem!
+
+It’s dinner time and you and your friends want to order some fast food. Begin by running the starting code to get a better idea of the menu!
+
+If you get stuck during this project and would like to see a developer work through it, click “Get Unstuck“ to see a project walkthrough video.
+
+Tasks
+11/11 complete
+Mark the tasks as complete by checking them off
+
+* Making the Order
+------------------
+1.
+Now that you have a better understanding of the menu items, create an indefinite loop to ask for orders.
+
+Start with declaring a string variable named order.
+
+While the order is not quit, use an indefinite loop to call the askOrder function over and over again.
+
+Make sure to save the output of the askOrder function to the order variable.
+
+
+Hint
+An example of an indefinite loop repeatedly calling a function:
+
+var animal string
+
+for animal != "dog" {
+  animal = getPet()
+}
+
+* Checking the Menu with a Helper Function
+------------------------------------------
+2.
+With you now taking orders, you can begin to check if its on the menu.
+
+To start, create a helper function called contains which takes as input a string slice named menu and a string named order.
+
+This function will output a boolean depending on if the order is in the menu.
+
+
+Hint
+An example of a function which takes a string and a string slice as an input and then outputs a boolean:
+
+func has(shop []string, product string) bool {
+  // FUNCTION BODY HERE
+}
+
+3.
+Within the contains function, write a loop that uses the range keyword with the menu array.
+
+If the inputted order matches a value in the array, return true.
+
+
+Hint
+An example of a range loop inside a function:
+
+func has(shop []string, product string) (bool) {
+  for _, item := range shop {
+    if product == item {
+      return true
+    }
+  }
+}
+
+4.
+After the range loop, have the contains function return false, because if the whole menu has been processed without a match, the menu does not contain the order.
+
+
+Hint
+An example of a function returning false:
+
+func has(shop []string, product string) (bool) {
+  for _, item := range shop {
+    if product == item {
+      return true
+    }
+  }
+  return false
+}
+
+* Check the Fast Food Menu
+--------------------------
+5.
+The helper function can now be used to check if the fastfoodMenu has the desired order.
+
+Back inside the main function, within the loop that checks if order is not quit, write a conditional if statement.
+
+Have this if statement check if the fastfoodMenu contains the order by using your new contains function.
+
+
+Hint
+An example of a conditional if statement that checks the boolean output of a function:
+
+if has(shelter, animal) {
+  // IF STATEMENT BODY HERE
+}
+
+6.
+In the newly created conditional statement, if the fastfoodMenu contains the order, increase the total by 4.
+
+Otherwise, print a message saying that this item is not on the menu.
+
+
+Hint
+An example of a conditional if statement that increases an integer or otherwise prints a message:
+
+if has(shelter, animal) {
+  pets += 1
+} else {
+  fmt.Println("Sorry, this shelter doesn't have that animal.")
+}
+
+* Counting the Total
+--------------------
+7.
+The total is all set and now it is time to pay the cashier!
+
+After the entire loop asking for orders, write a definite loop to count the amount of money left to give to the cashier.
+
+Have the initial statement create a variable called amount that is equal to total.
+
+
+Hint
+An example of a definite loop with an initial statement:
+
+for remaining := sum; CONDITIONAL_EXPRESSION; POST_STATEMENT {
+  // LOOP BODY HERE
+}
+
+8.
+Next, this loop should only run on the condition that amount is greater than 0.
+
+
+Hint
+An example of a definite loop with an initial statement and conditional expression:
+
+for remaining := sum; remaining > 0; POST_STATEMENT {
+  // LOOP BODY HERE
+}
+
+9.
+Oh no, you haven’t visited the bank in weeks! All you have is a collection of $2 bills!
+
+After each loop, the post statement should subtract 2 from amount to give a $2 bill to the cashier.
+
+
+Hint
+An example of a complete definite loop:
+
+for remaining := sum; remaining > 0; amount -= 12 {
+  // LOOP BODY HERE
+}
+
+10.
+Now within the loop, print the remaining amount to be paid to the cashier as well as a message about handing a $2 bill to the cashier.
+
+
+Hint
+An example of a definite loop printing messages:
+
+for remaining := sum; remaining > 0; amount -= 12 {
+  fmt.Println("The amount of eggs left is", remaining)
+  fmt.Println("Here is a dozen eggs!")
+}
+
+11.
+You made it through the project! You were able to:
+
+Create an indefinite loop for inputting orders.
+Write a helper function to check if the fastfoodMenu contains the order.
+Come up with a definite loop to count the amount of $2 bills needed to pay.
+Congratulations on mastering loops in Go!
+
+order.go
+--------
+package main
+
+import (
+  "fmt"
+)
+
+func askOrder() (string) {
+  var input string
+  fmt.Print("What would you like to eat: ")
+  // Get the input from the user
+  fmt.Scan(&input)
+  return input
+}
+
+// WRITE CONTAINS FUNCTION BELOW
+func contains(menu []string, order string) bool {
+  for _, item := range menu {
+    if order == item {
+      return true
+    }
+  }
+  return false
+}
+
+func main() {
+  fastfoodMenu := []string{"Burgers", "Nuggets", "Fries"}
+  fmt.Println("The fast food menu has these items:", fastfoodMenu)
+ 
+  var total int
+  var order string
+  // WRITE INDEFINITE LOOP ASKING FOR ORDERS BELOW
+  for order != "quit" {
+    order = askOrder()
+    if contains (fastfoodMenu, order) {
+      total += 4
+    } else {
+      fmt.Println("This item is not on the menu.")
+    }
+  }
+    
+
+
+  // WRITE DEFINITE LOOP COUNTING $2 BILLS BELOW
+  for amount := total; amount > 0; amount -= 2 {
+    fmt.Println("The amout owed is", amount)
+    fmt.Println("Handing over a two dollar bill.")
+  }
+  fmt.Println("The total for the order is", total)
+}
