@@ -542,6 +542,92 @@ func main() {
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+* Append to Slices
+------------------
+So far we have covered what arrays and slices are, and how to work with them at a basic level. However, a big aspect of working with slices are that we can add elements and the slice will 
+resize automatically. But how do we add to a slice?
+
+Go provides us with a function, append that handles all of the logic of adding to and resizing a slice:
+
+	books := []string{"Tom Sawyer", "Of Mice and Men"}
+	books = append(books, "Frankenstein")
+	books = append(books, "Dracula")
+	fmt.Println(books)
+	// [Tom Sawyer Of Mice and Men Frankenstein Dracula]
+
+Being able to add new elements to a slice is very important. Especially when data comes in over time that we cannot predict.
+
+Let’s practice appending elements in a Go program!
+
+* Instructions
+--------------
+Checkpoint 1 Passed
+1.
+As mentioned before, we need to add some new tutors to our tutoring center.
+
+Can you use the append function to add Josh to the list?
+
+
+Hint
+The syntax for using slice syntax is as follows:
+
+	sliceName = append(sliceName, value)
+
+Checkpoint 2 Passed
+2.
+Print the slice of tutors after having added Josh.
+
+
+Hint
+We can print a slice using syntax similar to:
+
+	fmt.Println(variable)
+
+arrays.go
+---------
+package main
+
+import "fmt"
+
+func main() {
+    myTutors := []string{"Kirsty", "Mishell", "Jose", "Neil"}
+    fmt.Println(myTutors)
+    myTutors = append(myTutors, "Josh")
+    fmt.Println(myTutors)
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
