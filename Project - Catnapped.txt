@@ -1,0 +1,208 @@
+# PROJECT
+---------
+
+* Catnapped
+-----------
+In this project, we will be setting up a single-player mystery board game.
+
+A number of guests are attending a party in your parlor when the lights go out. You hear an angry “MEOW!” When the lights come back on, you realize — your cat is gone! It’s up to you to 
+find out who hid your cat and where the cat is hidden!
+
+Imagine that we have a gameboard with a collection of locations and guests.
+
+In order to make our game work we need some lists:
+
+	. The guests in the house
+
+	. The objects the cat could be hidden inside of
+
+Each game, we would also need to create a solution to the mystery. The solution would contain:
+
+	. The guest who stole the cat
+
+	. The object the cat is in
+
+In this project, we will create these lists and the solution to our mystery!
+
+* Setting Up The House
+----------------------
+1.
+Let’s get started by creating a guest list. Each guest just needs a name. Feel free to add:
+
+	. Famous people
+	. People you know
+	. Goofy names
+
+Create an array inside of main that holds these names!
+
+
+Hint
+A way to create an array of strings is:
+
+words := [3]string{"Good", "Bad", "Stinky"}
+
+2.
+Next, let’s create some cat storage objects. These might include:
+
+	. A Toy Chest
+	. A Crate
+	. A Box
+
+Or anything you want!
+
+Create an array that stores the names of these objects.
+
+
+Hint
+We would want to define an array of strings, similar to:
+
+words := [3]string{"Good", "Bad", "Stinky"}
+
+3.
+Let’s print out our lists, with a label for each array.
+
+At the top of the file, be sure to import the fmt package.
+
+
+Hint
+We can print an array and a label for it like so:
+
+fmt.Println("Label:", myArray)
+
+Don’t forget to import the fmt package!
+
+* Getting Random Elements
+-------------------------
+4.
+We are going to need to generate random numbers! Let’s set that up.
+
+Import "math/rand" as well as "time".
+
+Inside of main, seed the random generation with the current time.
+
+
+Hint
+We can import multiple packages with the following syntax:
+
+import (
+    "x"
+    "y"
+    "z"
+)
+
+We seed random generation at the start of main by using the following syntax:
+
+rand.Seed(time.Now().UnixNano())
+
+5.
+We want random elements from our arrays multiple times. In order to avoid repeating too much code, let’s make a function.
+
+Define a function called getRandomElement which takes in string slice as a parameter and returns a string.
+
+
+Hint
+The syntax for defining a function with a slice parameter looks like:
+
+func myFunctionName(slice []type) type {
+}
+
+6.
+Let’s define the content of the function.
+
+We want to return a random element in our slice.
+
+Generate a random index between 0 and the length of the slice parameter.
+
+Return the slice element at that index.
+
+
+Hint
+This will require the use of the len function, and passing that value into rand.Intn. We can get the length of a slice with the following syntax:
+
+length := len(slice)
+
+We can generate a random number between 0 and a value (exclusive) using rand.Intn:
+
+randomValue := rand.Intn(value)
+
+We would then access the element in the slice at that index and return it from the function.
+
+return slice[someIndex]
+
+* Solving The Mystery
+---------------------
+7.
+With our getRandomElement function complete, we are ready to create the solution to our mystery.
+
+Get a random element from each of our lists and store them in different variables:
+
+The Guests
+The Locations/Objects
+In order to pass our arrays into getRandomElement we will need to convert them to slices.
+
+
+Hint
+To pass our array into getRandomElement we will need to convert it into a slice. The syntax for doing so looks like:
+
+sliceVersion := array[:]
+
+We can then call the function with syntax similar to:
+
+myElement := getRandomElement(mySlice)
+
+8.
+Print out the solution to our mystery in the form of a sentence.
+
+
+Hint
+One example is:
+
+fmt.Println(culprit, "hid the cat by putting it in the", secretObject)
+
+* Running The Program
+---------------------
+9.
+Use the go run terminal command to run our program.
+
+
+Hint
+The syntax for the go run command is:
+
+go run catnapped.go
+
+catnapped.go
+------------
+package main
+
+import (
+  "fmt" 
+  "math/rand" 
+  "time"
+)
+
+func getRandomElement(slice []string) string {
+    length := len(slice)
+    randomValue := rand.Intn(length)
+    return slice[randomValue]
+  }
+
+func main() {
+  rand.Seed(time.Now().UnixNano())
+  guests := [8]string{"Tom", "Holly", "Ioki", "Kurt", "Christ", "Dave", "Billy", "Jimmy"}
+
+  objects := [8]string{"A Toy Chest", "A Crate", "A Box", "A Drawer", "A TV", "A Shelf", "A Washing Machine", "A Desk"}
+
+  fmt.Println("Guests: ", guests)
+  fmt.Println("Objects: ", objects)
+
+  
+  guestsSliceVersion := guests[:]
+  objectsSliceVersion := objects[:]
+
+  theGuest := getRandomElement(guestsSliceVersion)
+  theLocation := getRandomElement(objectsSliceVersion)
+
+  fmt.Println(theGuest, "hid the cat by putting it in ", theLocation)
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
